@@ -26,7 +26,14 @@ it("should say hello", function() {
 // This is called "Red-Green-Refactor"
 // ========================================================
 
+it('area should equal w * h', function() {
+  const width = 5, height = 10, area = utils.area(width * height)
 
+  expect(width).to.be.a('number')
+  expect(height).to.be.a('number')
+  expect(area).to.be.a('number')
+  expect(area).to.be.equal(50)
+})
 
 
 // ========================================================
@@ -50,9 +57,15 @@ it("Should create a new (object) Item with name and price", function() {
   expect(item).to.have.property("quantity", 1)
 })
 
-it("Should return an array containing all items in cart")
+it("Should return an array containing all items in cart", function() {
+  const shoppingCart = []
+  expect(shoppingCart).to.be.a('array')
+
+})
 
 it("Should add a new item to the shopping cart")
+  const addItem = utils.addItemToCart()
+  expect(item).to.be.a('object')
 
 it("Should return the number of items in the cart")
 
