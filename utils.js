@@ -50,9 +50,6 @@ const getNumItemsInCart = () => {
 
 const removeItemFromCart = (item) => {
   // should remove item from shopping cart
-  // const removeId = shoppingCart.indexOf(item)
-  // shoppingCart.splice(removeId, 1)
-  // return shoppingCart
   shoppingCart.splice(shoppingCart.indexOf(item), 1)
   return shoppingCart
 }
