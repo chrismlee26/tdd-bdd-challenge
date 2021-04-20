@@ -21,9 +21,6 @@ const circleArea = r => {
 // ========================================================
 // Level 2 Challenges
 // ========================================================
-// NOTE: You will need to implement methods below (not yet
-// defined) in order to make the tests pass.
-// ========================================================
 
 const shoppingCart = []
 
@@ -37,7 +34,7 @@ const createItem = (name, price) => {
 
 const getShoppingCart = () => {
   // should return the current state of shopping cart
-  console.log(shoppingCart)
+  return shoppingCart
 }
 
 const addItemToCart = (item) => {
@@ -53,8 +50,10 @@ const getNumItemsInCart = () => {
 
 const removeItemFromCart = (item) => {
   // should remove item from shopping cart
-  const removeId = shoppingCart.indexOf(item)
-  shoppingCart.splice(removeId, 1)
+  // const removeId = shoppingCart.indexOf(item)
+  // shoppingCart.splice(removeId, 1)
+  // return shoppingCart
+  shoppingCart.splice(shoppingCart.indexOf(item), 1)
   return shoppingCart
 }
 

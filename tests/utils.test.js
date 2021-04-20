@@ -3,12 +3,6 @@ const chai = require("chai")
 const utils = require("../utils")
 const expect = chai.expect
 
-// ========================================================
-// NOTE: https://mochajs.org/#arrow-functions
-// Passing arrow functions (“lambdas”) to Mocha is discouraged.
-// Lambdas lexically bind this and cannot access the Mocha context.
-// ========================================================
-
 it("should say hello", function() {
   const hello = utils.sayHello()
   expect(hello).to.be.a("string")
@@ -27,11 +21,12 @@ it("should say hello", function() {
 // ========================================================
 
 it('area should equal w * h', function() {
-  const width = 5, height = 10, area = utils.area(width * height)
+  const width = 5, height = 10, area = utils.area(width, height)
 
   expect(width).to.be.a('number')
   expect(height).to.be.a('number')
   expect(area).to.be.a('number')
+  expect(area).to.be.equal(width * height)
   expect(area).to.be.equal(50)
 })
 
@@ -58,18 +53,39 @@ it("Should create a new (object) Item with name and price", function() {
 })
 
 it("Should return an array containing all items in cart", function() {
-  const shoppingCart = []
-  expect(shoppingCart).to.be.a('array')
-
+  const cart = utils.getShoppingCart()
+  expect(cart).to.be.a('array')
+  expect(cart.length).to.equal(0)
 })
 
-it("Should add a new item to the shopping cart")
-  const addItem = utils.addItemToCart()
+it("Should add a new item to the shopping cart", function() {
+  let item = utils.createItem("banana", .50)
   expect(item).to.be.a('object')
+  utils.addItemToCart()
+  expect(utils.getShoppingCart().length).to.equal(1)
+  utils.createItem("pineapple", 4.00)
+  utils.addItemToCart()
+  expect(utils.getShoppingCart().length).to.equal(2)
+  
+})
 
-it("Should return the number of items in the cart")
+it("Should return the number of items in the cart", function(){
+  const cart = utils.getShoppingCart()
+  expect(cart).to.be.a("array")
+  expect(cart.length).to.equal(0)
+})
 
-it("Should remove items from cart")
+it("Should remove items from cart", function() {
+  const item = utils.createItem("banana", .50)
+  utils.addItemToCart()
+  utils.getShoppingCart()
+  expect(utils.getShoppingCart()).to.been.a("array")
+  expect(utils.getShoppingCart().length).to.equal(1)
+  utils.removeItemFromCart(item)
+  utils.getShoppingCart()
+  expect(utils.getShoppingCart().length).to.equal(0)
+  
+})
 
 // ========================================================
 // Stretch Challenges
